@@ -9,8 +9,7 @@ const stats = [
 ];
 
 const tabs = ["Long video", "Short video", "Playlist", "Guestbook"];
-
-export default function ProfileScreen() {
+const ProfileScreen = () => {
   return (
     <DashboardLayout variant="profile">
       <div className="flex flex-col gap-4 lg:flex-row lg:gap-0">
@@ -45,10 +44,18 @@ export default function ProfileScreen() {
             <div className="border-b border-white/20 px-3 pb-2 pt-1">
               <div className="flex flex-wrap items-end justify-between gap-3">
                 <div>
-                  <h1 className="text-lg font-semibold text-white sm:text-xl">
-                    Stas Neprokin <span className="text-yellow-400">●</span>
+                  <h1 className="flex items-center gap-2 text-lg font-semibold text-white sm:text-xl">
+                    <span>Stas Neprokin</span>
+                    <img
+                      src="/images/social/right.png"
+                      alt=""
+                      aria-hidden="true"
+                      className="h-5 w-5 object-contain sm:h-6 sm:w-6"
+                    />
                   </h1>
-                  <p className="text-sm text-emerald-400 sm:text-base">● Available Now</p>
+                  <p className="text-sm text-emerald-400 sm:text-base">
+                    ● Available Now
+                  </p>
                 </div>
                 <div className="flex w-full items-center justify-between gap-2 sm:w-auto sm:justify-end">
                   <div className="flex max-w-full flex-wrap items-center rounded-full border border-white/40 text-[11px] font-bold text-white sm:text-xs">
@@ -79,7 +86,8 @@ export default function ProfileScreen() {
                 </div>
               </div>
               <p className="mt-2 text-sm text-white/80 sm:text-base">
-                SpaceX designs, manufactures and launches the world&apos;s most advanced rockets and spacecraft.
+                SpaceX designs, manufactures and launches the world&apos;s most
+                advanced rockets and spacecraft.
               </p>
               <div className="mt-2 flex flex-col items-start gap-2 text-xs text-white/70 sm:text-sm">
                 <div className="flex flex-wrap items-center justify-start gap-2">
@@ -158,12 +166,21 @@ export default function ProfileScreen() {
                 <button className="flex h-14 w-14 items-center justify-center rounded-full border border-white bg-[#071018] text-2xl text-white/80">
                   +
                 </button>
-                <span className="whitespace-nowrap text-xs text-white/70">Create new</span>
+                <span className="whitespace-nowrap text-xs text-white/70">
+                  Create new
+                </span>
               </div>
               {stories.map((story) => (
-                <div key={story.name + story.image} className="flex w-16 shrink-0 flex-col items-center gap-2">
+                <div
+                  key={story.name + story.image}
+                  className="flex w-16 shrink-0 flex-col items-center gap-2"
+                >
                   <div className="relative h-14 w-14 overflow-visible rounded-full border border-white bg-[#0a1119] p-[2px]">
-                    <img src={story.image} alt={story.name} className="h-full w-full rounded-full object-cover" />
+                    <img
+                      src={story.image}
+                      alt={story.name}
+                      className="h-full w-full rounded-full object-cover"
+                    />
                     <img
                       src="/images/social/fire.svg"
                       alt=""
@@ -171,7 +188,9 @@ export default function ProfileScreen() {
                       className="absolute -bottom-1 -right-1 h-5 w-5"
                     />
                   </div>
-                  <span className="whitespace-nowrap text-xs text-white/70">John Deo</span>
+                  <span className="whitespace-nowrap text-xs text-white/70">
+                    John Deo
+                  </span>
                 </div>
               ))}
             </div>
@@ -193,8 +212,15 @@ export default function ProfileScreen() {
 
             <div className="grid grid-cols-2 gap-3 p-3 sm:grid-cols-4">
               {trendingVideos.slice(0, 4).map((video, index) => (
-                <article key={`${video.title}-${index}`} className="relative aspect-[288/465] overflow-hidden rounded-[10px] bg-[#0b0d12]">
-                  <img src={video.image} alt={video.title} className="h-full w-full object-cover" />
+                <article
+                  key={`${video.title}-${index}`}
+                  className="relative aspect-[288/465] overflow-hidden rounded-[10px] bg-[#0b0d12]"
+                >
+                  <img
+                    src={video.image}
+                    alt={video.title}
+                    className="h-full w-full object-cover"
+                  />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
                   <span className="absolute left-3 top-3 rounded-full bg-gray-500 px-2 py-1 text-[11px] font-medium text-white">
                     {video.views}
@@ -203,7 +229,9 @@ export default function ProfileScreen() {
                     S
                   </span>
                   <div className="absolute bottom-3 left-3 right-3">
-                    <span className="truncate text-sm text-white">The Handmaidens</span>
+                    <span className="truncate text-sm text-white">
+                      The Handmaidens
+                    </span>
                   </div>
                 </article>
               ))}
@@ -212,21 +240,32 @@ export default function ProfileScreen() {
         </div>
 
         <aside className="w-full shrink-0 border-t border-white/15 bg-black p-3 lg:w-[270px] lg:border-l lg:border-t-0 lg:border-white/15 xl:w-[300px]">
-          <h2 className="mb-3 text-sm font-semibold text-white">About Your Profile</h2>
+          <h2 className="mb-3 text-sm font-semibold text-white">
+            About Your Profile
+          </h2>
           <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-2">
             {stats.map(([label, value]) => (
-              <div key={label} className="rounded-full border border-white/20 px-2 py-2 text-center text-[10px] text-white/80">
-                <span className="mr-1 text-white/60">◉</span>{value} {label}
+              <div
+                key={label}
+                className="rounded-full border border-white/20 px-2 py-2 text-center text-[10px] text-white/80"
+              >
+                <span className="mr-1 text-white/60">◉</span>
+                {value} {label}
               </div>
             ))}
           </div>
           <div className="mt-2 rounded-full border border-white/20 px-2 py-2 text-center text-[10px] text-white/80">
             ▣ 1,169 videos
           </div>
-          <h2 className="mb-3 mt-8 text-sm font-semibold text-white">Your videos Categories</h2>
+          <h2 className="mb-3 mt-8 text-sm font-semibold text-white">
+            Your videos Categories
+          </h2>
           <div className="flex flex-wrap gap-1.5">
             {profileTags.map((tag) => (
-              <span key={tag} className="rounded bg-[#2b1169] px-2 py-1 text-[10px] text-white">
+              <span
+                key={tag}
+                className="rounded bg-[#2b1169] px-2 py-1 text-[10px] text-white"
+              >
                 {tag}
               </span>
             ))}
@@ -235,4 +274,5 @@ export default function ProfileScreen() {
       </div>
     </DashboardLayout>
   );
-}
+};
+export default ProfileScreen;

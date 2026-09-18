@@ -19,7 +19,7 @@ export function DashboardLayout({
               className="mb-6 h-15 w-15 object-cover"
             />
 
-            {["home", "video", "rectangle", "playVideo", "hash", "clock"].map((icon, index) => {
+            {["home", "playVideo", "rectangle", "video", "hash", "clock"].map((icon, index) => {
               const className = `mb-3 flex h-9 w-9 items-center justify-center rounded-full border text-[10px] font-semibold transition ${
                 index === 0
                   ? "border-[#60a5fa]/40 bg-[#1d4ed8]/15 text-[#dbeafe]"
