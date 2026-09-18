@@ -1,152 +1,225 @@
 import { profileTags, stories, trendingVideos } from "../../lib/data";
 import { DashboardLayout } from "../../components/dashboard-layout";
 
-const ProfileScreen=()=> {
+const stats = [
+  ["Views", "63.5M"],
+  ["Likes", "1.2M"],
+  ["Visits", "1.6M"],
+  ["Shares", "1.4M"],
+];
+
+const tabs = ["Long video", "Short video", "Playlist", "Guestbook"];
+
+export default function ProfileScreen() {
   return (
-    <DashboardLayout>
-            <div className="flex flex-col gap-6 xl:flex-row">
-              <div className="min-w-0 flex-1">
-                <div className="relative mb-5 overflow-hidden rounded-[26px] border border-white/6 bg-[#0e141d] p-3 sm:p-4">
-                  <div className="h-[230px] overflow-hidden rounded-[22px] bg-gradient-to-r from-[#1f1b2d] via-[#14151c] to-[#0f172a]">
-                    <img
-                      src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?auto=format&fit=crop&w=1600&q=80"
-                      alt="Profile banner"
-                      className="h-full w-full object-cover opacity-90"
-                    />
-                  </div>
-
-                  <div className="relative -mt-12 flex items-end justify-between gap-4 px-2 pb-2">
-                    <div className="flex items-end gap-4">
-                      <div className="flex h-[120px] w-[120px] items-center justify-center overflow-hidden rounded-full border-[4px] border-[#0e141d] bg-[#0b0f15] shadow-[0_15px_35px_rgba(0,0,0,0.45)]">
-                        <img
-                          src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=800&q=80"
-                          alt="Profile avatar"
-                          className="h-full w-full object-cover"
-                        />
-                      </div>
-
-                      <div className="pb-4">
-                        <div className="flex items-center gap-2">
-                          <h1 className="text-[28px] font-semibold">Stas Neprokin</h1>
-                          <span className="inline-flex h-5 w-5 items-center justify-center rounded-full border border-white/10 bg-white/5 text-[10px]">✓</span>
-                        </div>
-                        <div className="mt-1 flex items-center gap-2 text-sm text-[#9ca3af]">
-                          <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-[11px] text-emerald-300">
-                            ● Available Now
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div className="flex gap-2 pb-4">
-                      <button className="rounded-full bg-[#7c3aed] px-4 py-2 text-sm font-medium text-white shadow-lg shadow-violet-900/30">
-                        Follow
-                      </button>
-                      <button className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm font-medium text-white/90">
-                        Message
-                      </button>
-                      <button className="rounded-full border border-white/10 bg-white/[0.03] px-4 py-2 text-sm font-medium text-white/90">
-                        Gift
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                <div className="mb-4 flex items-center justify-between gap-4">
-                  <p className="text-sm text-white/70">
-                    SpaceX designs, manufactures and launches the world’s most advanced rockets and spacecraft.
-                  </p>
-                  <button className="text-xl text-white/60">⤴</button>
-                </div>
-
-                <div className="mb-5 flex flex-wrap items-center gap-2 text-sm text-white/65">
-                  <span className="rounded-full border border-white/8 bg-white/[0.02] px-2.5 py-1">2 Free Playlists</span>
-                  <span className="rounded-full border border-white/8 bg-white/[0.02] px-2.5 py-1">4 Paid Playlists</span>
-                  <span className="rounded-full border border-white/8 bg-white/[0.02] px-2.5 py-1">Earth</span>
-                  <span className="rounded-full border border-white/8 bg-white/[0.02] px-2.5 py-1">Joined April 2009</span>
-                  <span className="rounded-full border border-white/8 bg-white/[0.02] px-2.5 py-1">spacex.com</span>
-                </div>
-
-                <div className="mb-5 flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
-                  <button className="flex h-[74px] w-[74px] shrink-0 items-center justify-center rounded-full border-[2px] border-[#37b5ff] bg-[#071018] text-3xl text-white/80">
-                    +
+    <DashboardLayout variant="profile">
+      <div className="flex flex-col gap-4 xl:flex-row xl:gap-0">
+        <div className="min-w-0 flex-1">
+          <section className="overflow-hidden bg-black">
+            <div className="relative h-[150px] overflow-hidden sm:h-[180px]">
+              <img
+                src="/images/social/1524504388940-b1c1722653e1.jpg"
+                alt="Profile cover"
+                className="h-full w-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+              <div className="absolute bottom-2 left-3 flex h-32 w-32 items-center justify-center rounded-full bg-black text-6xl text-white">
+                〽
+              </div>
+              <div className="absolute right-3 top-2 flex gap-2">
+                {["Follow", "Message", "Gift"].map((action) => (
+                  <button
+                    key={action}
+                    className={`rounded-full border px-4 py-1 text-lg text-white ${
+                      action === "Follow"
+                        ? "border-purple-500 bg-purple-600"
+                        : "border-white/30 bg-black/70"
+                    }`}
+                  >
+                    {action}
                   </button>
+                ))}
+              </div>
+            </div>
 
-                  {stories.map((story) => (
-                    <div key={story.name + story.image} className="flex shrink-0 flex-col items-center gap-2">
-                      <div className="relative flex h-[74px] w-[74px] items-center justify-center overflow-hidden rounded-full border-[3px] border-[#0ea5e9] bg-[#0a1119] p-[2px]">
-                        <img src={story.image} alt={story.name} className="h-full w-full rounded-full object-cover" />
-                      </div>
-                      <span className="text-[11px] text-white/70">{story.name}</span>
-                    </div>
-                  ))}
+            <div className="border-b border-white/20 px-3 pb-2 pt-1">
+              <div className="flex flex-wrap items-end justify-between gap-3">
+                <div>
+                  <h1 className="text-xl font-semibold text-white">
+                    Stas Neprokin <span className="text-yellow-400">●</span>
+                  </h1>
+                  <p className="text-base text-emerald-400">● Available Now</p>
                 </div>
-
-                <div className="mb-6 grid gap-4 md:grid-cols-3">
-                  {[
-                    { label: "Long video", items: trendingVideos.slice(0, 3) },
-                    { label: "Short video", items: trendingVideos.slice(1, 4) },
-                    { label: "Playlist", items: trendingVideos.slice(2, 5) },
-                  ].map((section) => (
-                    <div key={section.label}>
-                      <h3 className="mb-3 text-lg font-medium text-white">{section.label}</h3>
-                      <div className="grid grid-cols-3 gap-2">
-                        {section.items.map((video, idx) => (
-                          <div key={video.title + idx} className="overflow-hidden rounded-[18px] border border-white/8 bg-[#0d141d]">
-                            <div className="relative h-[140px] overflow-hidden">
-                              <img src={video.image} alt={video.title} className="h-full w-full object-cover" />
-                              <div className="absolute inset-0 bg-gradient-to-t from-[#080d12]/90 via-[#080d12]/10 to-transparent" />
-                              <span className="absolute right-2 top-2 flex h-6 w-6 items-center justify-center rounded-full bg-[#f4f4f5] text-[10px] font-bold text-[#0d1018]">
-                                {video.badge}
-                              </span>
-                              <div className="absolute bottom-2 left-2 right-2 text-[10px] text-white/80">
-                                {video.views}
-                              </div>
-                            </div>
-                          </div>
-                        ))}
-                      </div>
-                    </div>
+                <div className="flex items-center gap-2">
+                  <div className="flex items-center rounded-full border border-white/40 text-xs font-bold text-white">
+                    <span className="px-2 py-1">143 Following</span>
+                    <span className="h-3 border-l border-white/40" />
+                    <span className="px-2 py-1">149 View</span>
+                    <span className="h-3 border-l border-white/40" />
+                    <span className="px-2 py-1">149 Likes</span>
+                  </div>
+                  <button
+                    aria-label="Share profile"
+                    className="flex h-7 w-7 items-center justify-center rounded-full border border-white/40 text-xs text-white"
+                  >
+                    <svg
+                      aria-hidden="true"
+                      className="h-3.5 w-3.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                    >
+                      <circle cx="6" cy="12" r="2.5" />
+                      <circle cx="18" cy="6" r="2.5" />
+                      <circle cx="18" cy="18" r="2.5" />
+                      <path d="m8.2 10.8 7.6-3.6M8.2 13.2l7.6 3.6" />
+                    </svg>
+                  </button>
+                </div>
+              </div>
+              <p className="mt-2 text-base text-white/80">
+                SpaceX designs, manufactures and launches the world&apos;s most advanced rockets and spacecraft.
+              </p>
+              <div className="mt-2 flex flex-col items-start gap-2 text-sm text-white/70">
+                <div className="flex flex-wrap items-center justify-start gap-2">
+                  <span className="rounded-full border border-purple-300/50 bg-purple-400/30 px-2 py-1 text-white">
+                    2 Free Playlists
+                  </span>
+                  <span className="rounded-full border border-blue-300/50 bg-blue-400/30 px-2 py-1 text-white">
+                    4 Paid Playlists
+                  </span>
+                  <span className="inline-flex items-center gap-1">
+                    <svg
+                      aria-hidden="true"
+                      className="h-3.5 w-3.5 text-white/80"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                    >
+                      <path d="M12 21s7-6.1 7-12a7 7 0 1 0-14 0c0 5.9 7 12 7 12Z" />
+                      <circle cx="12" cy="9" r="2.2" />
+                    </svg>
+                    Earth
+                  </span>
+                  <span className="inline-flex items-center gap-1">
+                    <svg
+                      aria-hidden="true"
+                      className="h-3.5 w-3.5 text-white/80"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                    >
+                      <rect x="4" y="5" width="16" height="15" rx="2" />
+                      <path d="M8 3v4M16 3v4M4 10h16" />
+                    </svg>
+                    Joined April 2009
+                  </span>
+                  <span className="inline-flex items-center gap-1 text-cyan-300">
+                    <svg
+                      aria-hidden="true"
+                      className="h-3.5 w-3.5"
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      stroke="currentColor"
+                      strokeWidth="1.8"
+                    >
+                      <path d="M10.5 13.5a4 4 0 0 0 5.7.1l2-2a4 4 0 0 0-5.7-5.7l-1.1 1.1" />
+                      <path d="M13.5 10.5a4 4 0 0 0-5.7-.1l-2 2a4 4 0 0 0 5.7 5.7l1.1-1.1" />
+                    </svg>
+                    spacex.com
+                  </span>
+                </div>
+                <div className="flex items-center justify-start gap-4 text-cyan-300">
+                  {[1, 2, 3].map((item) => (
+                    <span key={item} className="inline-flex items-center gap-1">
+                      <svg
+                        aria-hidden="true"
+                        className="h-3.5 w-3.5"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth="1.8"
+                      >
+                        <path d="M10.5 13.5a4 4 0 0 0 5.7.1l2-2a4 4 0 0 0-5.7-5.7l-1.1 1.1" />
+                        <path d="M13.5 10.5a4 4 0 0 0-5.7-.1l-2 2a4 4 0 0 0 5.7 5.7l1.1-1.1" />
+                      </svg>
+                      <span>spacex.com</span>
+                    </span>
                   ))}
                 </div>
               </div>
-
-              <aside className="w-full xl:w-[320px]">
-                <div className="rounded-[22px] border border-white/8 bg-[#070d14] p-4">
-                  <h2 className="mb-4 text-[18px] font-semibold text-white">About Your Profile</h2>
-
-                  <div className="grid grid-cols-2 gap-3">
-                    {[
-                      { label: "Views", value: "63.3M" },
-                      { label: "Likes", value: "1.2M" },
-                      { label: "Followers", value: "1.6M" },
-                      { label: "Shares", value: "1.4M" },
-                    ].map((stat) => (
-                      <div key={stat.label} className="rounded-[16px] border border-white/8 bg-white/[0.02] p-3">
-                        <p className="text-[11px] uppercase tracking-[0.08em] text-white/45">{stat.label}</p>
-                        <p className="mt-2 text-xl font-semibold text-white">{stat.value}</p>
-                      </div>
-                    ))}
-                  </div>
-
-                  <div className="mt-5 rounded-[16px] border border-white/8 bg-white/[0.02] p-3 text-center text-sm text-white/70">
-                    1,169 videos
-                  </div>
-
-                  <div className="mt-6">
-                    <h3 className="mb-3 text-[18px] font-semibold text-white">Your videos categories</h3>
-                    <div className="flex flex-wrap gap-2">
-                      {profileTags.map((tag) => (
-                        <span key={tag} className="rounded-full bg-[#322f6d] px-3 py-1.5 text-sm text-white/90">
-                          {tag}
-                        </span>
-                      ))}
-                    </div>
-                  </div>
-                </div>
-              </aside>
             </div>
+
+            <div className="flex gap-5 overflow-x-auto px-3 py-5">
+              <div className="flex w-16 shrink-0 flex-col items-center gap-2">
+                <button className="flex h-14 w-14 items-center justify-center rounded-full border border-cyan-400 text-2xl text-white">+</button>
+                <span className="whitespace-nowrap text-xs text-white/70">Create new</span>
+              </div>
+              {stories.map((story) => (
+                <div key={story.name + story.image} className="flex w-16 shrink-0 flex-col items-center gap-2">
+                  <img src={story.image} alt={story.name} className="h-14 w-14 rounded-full border border-cyan-400 object-cover" />
+                  <span className="whitespace-nowrap text-xs text-white/70">John Deo</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-4">
+              {tabs.map((tab, index) => (
+                <button
+                  key={tab}
+                  className={`border-b-2 py-2 text-[10px] ${
+                    index === 1
+                      ? "border-violet-500 font-semibold text-white"
+                      : "border-transparent text-white/60"
+                  }`}
+                >
+                  {tab}
+                </button>
+              ))}
+            </div>
+
+            <div className="grid grid-cols-2 gap-1 p-1 sm:grid-cols-4">
+              {[...trendingVideos, ...trendingVideos].map((video, index) => (
+                <article key={`${video.title}-${index}`} className="relative aspect-[0.72] overflow-hidden bg-[#0b0d12]">
+                  <img src={video.image} alt={video.title} className="h-full w-full object-cover" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
+                  <span className="absolute right-1 top-1 rounded bg-violet-700 px-1.5 py-1 text-[9px] font-bold text-white">S</span>
+                  <span className="absolute left-1 top-1 text-[9px] text-white">3.1M views</span>
+                  <div className="absolute bottom-1 left-1 right-1 flex items-end justify-between gap-1">
+                    <span className="truncate text-[10px] text-white">The Handmaidens</span>
+                    <span className="text-white">◔</span>
+                  </div>
+                </article>
+              ))}
+            </div>
+          </section>
+        </div>
+
+        <aside className="w-full shrink-0 border-t border-white/15 bg-black p-3 xl:w-[270px] xl:border-l xl:border-t-0 xl:border-white/15">
+          <h2 className="mb-3 text-sm font-semibold text-white">About Your Profile</h2>
+          <div className="grid grid-cols-2 gap-2">
+            {stats.map(([label, value]) => (
+              <div key={label} className="rounded-full border border-white/20 px-2 py-2 text-center text-[9px] text-white/80">
+                <span className="mr-1 text-white/60">◉</span>{value} {label}
+              </div>
+            ))}
+          </div>
+          <div className="mt-2 rounded-full border border-white/20 px-2 py-2 text-center text-[9px] text-white/80">
+            ▣ 1,169 videos
+          </div>
+          <h2 className="mb-3 mt-8 text-sm font-semibold text-white">Your videos Categories</h2>
+          <div className="flex flex-wrap gap-1.5">
+            {profileTags.map((tag) => (
+              <span key={tag} className="rounded bg-[#2b1169] px-2 py-1 text-[9px] text-white">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </aside>
+      </div>
     </DashboardLayout>
   );
 }
-export default ProfileScreen;

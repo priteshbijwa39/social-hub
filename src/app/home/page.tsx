@@ -9,9 +9,12 @@ const HomeScreen=() => {
             </div>
 
             <div className="mb-5 flex gap-3 overflow-x-auto pb-2 scrollbar-hide">
-              <button className="flex h-[74px] w-[74px] shrink-0 items-center justify-center rounded-full border-[2px] border-[#37b5ff] bg-[#071018] text-3xl text-white/80 shadow-[inset_0_0_0_2px_rgba(55,181,255,0.2)]">
-                +
-              </button>
+              <div className="flex shrink-0 flex-col items-center gap-2">
+                <button className="flex h-[74px] w-[74px] items-center justify-center rounded-full border-[2px] border-[#37b5ff] bg-[#071018] text-3xl text-white/80 shadow-[inset_0_0_0_2px_rgba(55,181,255,0.2)]">
+                  +
+                </button>
+                <span className="text-[11px] text-white/70">Create new story</span>
+              </div>
 
               {stories.map((story) => (
                 <div key={story.name + story.image} className="flex shrink-0 flex-col items-center gap-2">
@@ -23,13 +26,15 @@ const HomeScreen=() => {
               ))}
             </div>
 
-            <div className="mb-6 grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-6">
+            <section className="mb-6">
+              <h3 className="mb-3 text-[17px] font-semibold text-white">💖 Playlist &amp; chill</h3>
+              <div className="grid grid-cols-2 gap-3 md:grid-cols-3 xl:grid-cols-3">
               {categoryCards.map((item, idx) => (
                 <button
                   key={item.name + idx}
                   className={`group relative overflow-hidden rounded-[20px] border border-white/8 bg-gradient-to-br ${item.accent} p-[1px] text-left`}
                 >
-                  <div className="relative h-[110px] overflow-hidden rounded-[19px] bg-[#0a0f16]/80 px-3 py-3">
+                  <div className="relative h-[110px] overflow-hidden rounded-[19px] bg-black/80 px-3 py-3">
                     <img
                       src={item.image}
                       alt={item.name}
@@ -45,11 +50,12 @@ const HomeScreen=() => {
                   </div>
                 </button>
               ))}
-            </div>
+              </div>
+            </section>
 
             <section className="mb-7">
               <div className="mb-3 flex items-center justify-between">
-                <h3 className="text-[17px] font-semibold text-white">Most trending porn & reels</h3>
+                <h3 className="text-[17px] font-semibold text-white">🚀 Most trending porn &amp; reels</h3>
                 <button className="text-sm text-white/60">All reels</button>
               </div>
 
