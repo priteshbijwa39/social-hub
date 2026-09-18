@@ -10,22 +10,28 @@ export function DashboardLayout({
 }) {
   return (
     <div className="min-h-screen bg-black text-white">
-      <div className="mx-auto max-w-[1320px] overflow-hidden bg-black">
-        <div className="flex min-h-[920px]">
-          <aside className="hidden w-[72px] flex-col items-center border-r border-white/8 bg-black py-5 md:flex">
+      <div className="w-full overflow-hidden bg-black">
+        <div className="flex min-h-screen">
+          <aside className="hidden w-[72px] flex-col items-center border-r border-white/8 bg-black py-3 md:flex">
             <img
-              src="/images/social/1524504388940-b1c1722653e1.jpg"
+              src="/images/social/Logomark.png"
               alt="Profile"
-              className="mb-6 h-12 w-12 rounded-full border border-white/20 object-cover"
+              className="mb-6 h-15 w-15 object-cover"
             />
 
-            {["home", "play", "bag", "grid", "chart", "spark"].map((icon, index) => {
+            {["home", "video", "rectangle", "playVideo", "hash", "clock"].map((icon, index) => {
               const className = `mb-3 flex h-9 w-9 items-center justify-center rounded-full border text-[10px] font-semibold transition ${
                 index === 0
                   ? "border-[#60a5fa]/40 bg-[#1d4ed8]/15 text-[#dbeafe]"
                   : "border-white/5 bg-white/[0.02] text-white/70"
               }`;
-              const content = index === 0 ? "⌂" : index === 1 ? "◸" : index === 2 ? "▣" : index === 3 ? "▦" : index === 4 ? "◮" : "✦";
+              const content = (
+                <img
+                  src={`/images/sidebar/${icon}.png`}
+                  alt={`${icon} navigation`}
+                  className={index === 0 ? "h-5 w-5" : "h-9 w-10"}
+                />
+              );
 
               return index === 0 ? (
                 <Link key={icon} href="/" className={className}>
@@ -40,12 +46,12 @@ export function DashboardLayout({
 
           </aside>
 
-          <main className="flex-1 bg-black">
-            <header className="flex items-center justify-between gap-3 border-b border-white/8 px-4 pb-3 pt-4 sm:px-5 lg:px-6">
+          <main className="min-w-0 flex-1 bg-black">
+            <header className="flex items-center justify-between gap-3 border-b border-white/8 px-3 pb-3 pt-4 sm:px-5 lg:px-8">
               <div className="flex items-center gap-3">
-                <button className="inline-flex items-center gap-2 rounded-full bg-[#101926] px-3 py-2 text-sm font-medium text-white/80 shadow-[inset_0_0_0_1px_rgba(255,255,255,0.05)]">
+                <button className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-[rgba(61,0,255,0.2)] px-3 py-2 text-xs font-medium text-white shadow-[inset_0_0_0_1px_rgba(255,255,255,0.03)] sm:text-sm">
                   <span className="text-lg leading-none">+</span>
-                  <span>Upload video</span>
+                  <span className="hidden sm:inline">Upload video</span>
                 </button>
               </div>
 
@@ -97,7 +103,7 @@ export function DashboardLayout({
               className={
                 variant === "profile"
                   ? "pb-4"
-                  : "px-4 py-4 sm:px-5 lg:px-6"
+                  : "px-3 py-4 sm:px-5 lg:px-8"
               }
             >
               {children}

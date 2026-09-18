@@ -13,24 +13,24 @@ const tabs = ["Long video", "Short video", "Playlist", "Guestbook"];
 export default function ProfileScreen() {
   return (
     <DashboardLayout variant="profile">
-      <div className="flex flex-col gap-4 xl:flex-row xl:gap-0">
+      <div className="flex flex-col gap-4 lg:flex-row lg:gap-0">
         <div className="min-w-0 flex-1">
           <section className="overflow-hidden bg-black">
-            <div className="relative h-[150px] overflow-hidden sm:h-[180px]">
+            <div className="relative h-[170px] overflow-hidden sm:h-[210px] lg:h-[240px]">
               <img
                 src="/images/social/1524504388940-b1c1722653e1.jpg"
                 alt="Profile cover"
                 className="h-full w-full object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
-              <div className="absolute bottom-2 left-3 flex h-32 w-32 items-center justify-center rounded-full bg-black text-6xl text-white">
+              <div className="absolute bottom-2 left-3 flex h-24 w-24 items-center justify-center rounded-full bg-black text-5xl text-white sm:h-28 sm:w-28 lg:h-32 lg:w-32 lg:text-6xl">
                 〽
               </div>
-              <div className="absolute right-3 top-2 flex gap-2">
+              <div className="absolute right-3 top-2 flex max-w-[75%] flex-wrap justify-end gap-2">
                 {["Follow", "Message", "Gift"].map((action) => (
                   <button
                     key={action}
-                    className={`rounded-full border px-4 py-1 text-lg text-white ${
+                    className={`rounded-full border px-3 py-1 text-sm text-white sm:px-4 sm:text-base lg:text-lg ${
                       action === "Follow"
                         ? "border-purple-500 bg-purple-600"
                         : "border-white/30 bg-black/70"
@@ -45,22 +45,22 @@ export default function ProfileScreen() {
             <div className="border-b border-white/20 px-3 pb-2 pt-1">
               <div className="flex flex-wrap items-end justify-between gap-3">
                 <div>
-                  <h1 className="text-xl font-semibold text-white">
+                  <h1 className="text-lg font-semibold text-white sm:text-xl">
                     Stas Neprokin <span className="text-yellow-400">●</span>
                   </h1>
-                  <p className="text-base text-emerald-400">● Available Now</p>
+                  <p className="text-sm text-emerald-400 sm:text-base">● Available Now</p>
                 </div>
-                <div className="flex items-center gap-2">
-                  <div className="flex items-center rounded-full border border-white/40 text-xs font-bold text-white">
-                    <span className="px-2 py-1">143 Following</span>
+                <div className="flex w-full items-center justify-between gap-2 sm:w-auto sm:justify-end">
+                  <div className="flex max-w-full flex-wrap items-center rounded-full border border-white/40 text-[11px] font-bold text-white sm:text-xs">
+                    <span className="px-1.5 py-1 sm:px-2">143 Following</span>
                     <span className="h-3 border-l border-white/40" />
-                    <span className="px-2 py-1">149 View</span>
+                    <span className="px-1.5 py-1 sm:px-2">149 View</span>
                     <span className="h-3 border-l border-white/40" />
-                    <span className="px-2 py-1">149 Likes</span>
+                    <span className="px-1.5 py-1 sm:px-2">149 Likes</span>
                   </div>
                   <button
                     aria-label="Share profile"
-                    className="flex h-7 w-7 items-center justify-center rounded-full border border-white/40 text-xs text-white"
+                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-white/40 text-xs text-white"
                   >
                     <svg
                       aria-hidden="true"
@@ -78,10 +78,10 @@ export default function ProfileScreen() {
                   </button>
                 </div>
               </div>
-              <p className="mt-2 text-base text-white/80">
+              <p className="mt-2 text-sm text-white/80 sm:text-base">
                 SpaceX designs, manufactures and launches the world&apos;s most advanced rockets and spacecraft.
               </p>
-              <div className="mt-2 flex flex-col items-start gap-2 text-sm text-white/70">
+              <div className="mt-2 flex flex-col items-start gap-2 text-xs text-white/70 sm:text-sm">
                 <div className="flex flex-wrap items-center justify-start gap-2">
                   <span className="rounded-full border border-purple-300/50 bg-purple-400/30 px-2 py-1 text-white">
                     2 Free Playlists
@@ -132,7 +132,7 @@ export default function ProfileScreen() {
                     spacex.com
                   </span>
                 </div>
-                <div className="flex items-center justify-start gap-4 text-cyan-300">
+                <div className="flex flex-wrap items-center justify-start gap-x-4 gap-y-2 text-cyan-300">
                   {[1, 2, 3].map((item) => (
                     <span key={item} className="inline-flex items-center gap-1">
                       <svg
@@ -166,11 +166,11 @@ export default function ProfileScreen() {
               ))}
             </div>
 
-            <div className="grid grid-cols-4">
+            <div className="grid grid-cols-2 sm:grid-cols-4">
               {tabs.map((tab, index) => (
                 <button
                   key={tab}
-                  className={`border-b-2 py-2 text-[10px] ${
+                  className={`border-b-2 py-2 text-[10px] sm:text-xs ${
                     index === 1
                       ? "border-violet-500 font-semibold text-white"
                       : "border-transparent text-white/60"
@@ -198,22 +198,22 @@ export default function ProfileScreen() {
           </section>
         </div>
 
-        <aside className="w-full shrink-0 border-t border-white/15 bg-black p-3 xl:w-[270px] xl:border-l xl:border-t-0 xl:border-white/15">
+        <aside className="w-full shrink-0 border-t border-white/15 bg-black p-3 lg:w-[270px] lg:border-l lg:border-t-0 lg:border-white/15 xl:w-[300px]">
           <h2 className="mb-3 text-sm font-semibold text-white">About Your Profile</h2>
-          <div className="grid grid-cols-2 gap-2">
+          <div className="grid grid-cols-2 gap-2 sm:grid-cols-4 lg:grid-cols-2">
             {stats.map(([label, value]) => (
-              <div key={label} className="rounded-full border border-white/20 px-2 py-2 text-center text-[9px] text-white/80">
+              <div key={label} className="rounded-full border border-white/20 px-2 py-2 text-center text-[10px] text-white/80">
                 <span className="mr-1 text-white/60">◉</span>{value} {label}
               </div>
             ))}
           </div>
-          <div className="mt-2 rounded-full border border-white/20 px-2 py-2 text-center text-[9px] text-white/80">
+          <div className="mt-2 rounded-full border border-white/20 px-2 py-2 text-center text-[10px] text-white/80">
             ▣ 1,169 videos
           </div>
           <h2 className="mb-3 mt-8 text-sm font-semibold text-white">Your videos Categories</h2>
           <div className="flex flex-wrap gap-1.5">
             {profileTags.map((tag) => (
-              <span key={tag} className="rounded bg-[#2b1169] px-2 py-1 text-[9px] text-white">
+              <span key={tag} className="rounded bg-[#2b1169] px-2 py-1 text-[10px] text-white">
                 {tag}
               </span>
             ))}

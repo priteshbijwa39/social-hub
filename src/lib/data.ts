@@ -67,6 +67,18 @@ export const categoryCards: CategoryCard[] = [
     image: "/images/social/1544005313-94ddf0286df2.jpg",
     accent: "from-[#7e304f] via-[#2f1a31] to-[#0d1018]",
   },
+  {
+    name: "Lifestyle",
+    count: "90 Videos",
+    image: "/images/social/1506794778202-cad84cf45f1d.jpg",
+    accent: "from-[#f3c623] via-[#6b4f14] to-[#0d1018]",
+  },
+  {
+    name: "Premium",
+    count: "40 Videos",
+    image: "/images/social/1524504388940-b1c1722653e1.jpg",
+    accent: "from-[#9b5cff] via-[#482276] to-[#0d1018]",
+  },
 ];
 
 export const trendingVideos: VideoCard[] = [
