@@ -30,7 +30,7 @@ export default function ProfileScreen() {
                 {["Follow", "Message", "Gift"].map((action) => (
                   <button
                     key={action}
-                    className={`rounded-full border px-3 py-1 text-sm text-white sm:px-4 sm:text-base lg:text-lg ${
+                    className={`h-[42px] w-[107px] shrink-0 rounded-full border text-sm text-white sm:text-base lg:text-lg ${
                       action === "Follow"
                         ? "border-purple-500 bg-purple-600"
                         : "border-white/30 bg-black/70"
@@ -155,12 +155,22 @@ export default function ProfileScreen() {
 
             <div className="flex gap-5 overflow-x-auto px-3 py-5">
               <div className="flex w-16 shrink-0 flex-col items-center gap-2">
-                <button className="flex h-14 w-14 items-center justify-center rounded-full border border-cyan-400 text-2xl text-white">+</button>
+                <button className="flex h-14 w-14 items-center justify-center rounded-full border border-white bg-[#071018] text-2xl text-white/80">
+                  +
+                </button>
                 <span className="whitespace-nowrap text-xs text-white/70">Create new</span>
               </div>
               {stories.map((story) => (
                 <div key={story.name + story.image} className="flex w-16 shrink-0 flex-col items-center gap-2">
-                  <img src={story.image} alt={story.name} className="h-14 w-14 rounded-full border border-cyan-400 object-cover" />
+                  <div className="relative h-14 w-14 overflow-visible rounded-full border border-white bg-[#0a1119] p-[2px]">
+                    <img src={story.image} alt={story.name} className="h-full w-full rounded-full object-cover" />
+                    <img
+                      src="/images/social/fire.svg"
+                      alt=""
+                      aria-hidden="true"
+                      className="absolute -bottom-1 -right-1 h-5 w-5"
+                    />
+                  </div>
                   <span className="whitespace-nowrap text-xs text-white/70">John Deo</span>
                 </div>
               ))}
@@ -181,16 +191,19 @@ export default function ProfileScreen() {
               ))}
             </div>
 
-            <div className="grid grid-cols-2 gap-1 p-1 sm:grid-cols-4">
-              {[...trendingVideos, ...trendingVideos].map((video, index) => (
-                <article key={`${video.title}-${index}`} className="relative aspect-[0.72] overflow-hidden bg-[#0b0d12]">
+            <div className="grid grid-cols-2 gap-3 p-3 sm:grid-cols-4">
+              {trendingVideos.slice(0, 4).map((video, index) => (
+                <article key={`${video.title}-${index}`} className="relative aspect-[288/465] overflow-hidden rounded-[10px] bg-[#0b0d12]">
                   <img src={video.image} alt={video.title} className="h-full w-full object-cover" />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
-                  <span className="absolute right-1 top-1 rounded bg-violet-700 px-1.5 py-1 text-[9px] font-bold text-white">S</span>
-                  <span className="absolute left-1 top-1 text-[9px] text-white">3.1M views</span>
-                  <div className="absolute bottom-1 left-1 right-1 flex items-end justify-between gap-1">
-                    <span className="truncate text-[10px] text-white">The Handmaidens</span>
-                    <span className="text-white">◔</span>
+                  <span className="absolute left-3 top-3 rounded-full bg-gray-500 px-2 py-1 text-[11px] font-medium text-white">
+                    {video.views}
+                  </span>
+                  <span className="absolute right-2 top-2 flex h-7 w-7 items-center justify-center rounded-full bg-[#3D00FF] text-[11px] font-bold text-white">
+                    S
+                  </span>
+                  <div className="absolute bottom-3 left-3 right-3">
+                    <span className="truncate text-sm text-white">The Handmaidens</span>
                   </div>
                 </article>
               ))}
