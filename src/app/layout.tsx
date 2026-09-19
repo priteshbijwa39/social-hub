@@ -1,4 +1,3 @@
-// src/app/layout.tsx
 import type { Metadata } from "next";
 import { Geist } from "next/font/google";
 import "../app/globals.css";
@@ -22,7 +21,7 @@ export default function RootLayout({
       <body
         className={`${geist.className} antialiased min-h-screen flex flex-col`}
       >
-        <main className="flex-grow container mx-auto p-6">{children}</main>
+        <main className="flex-grow  mx-auto ">{children}</main>
       </body>
     </html>
   );
