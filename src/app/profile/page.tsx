@@ -271,6 +271,7 @@ const ProfileScreen = () => {
             ))}
           </div>
         </aside>
+        
       </div>
     </DashboardLayout>
   );
